@@ -4,10 +4,18 @@ Create three buttons, one for each selection. Add an event listener to the butto
 Add a div for displaying results and change all of your console.logs into DOM methods.
 */
 
+/*Initialized the scores*/
 let playerScore = 0;
 let computerScore = 0;
+
+
+/*set variable to computer's selection*/
 let computer = getComputerSelection();
-let player;
+
+/*got variable for player's selection*/
+let player = "";
+
+/*to store who the winner is*/
 let winner = "";
 
 
@@ -30,62 +38,80 @@ function getComputerSelection() {
 }
 
 
+function showData(){
+	
+document.getElementById("#playerScoreWindow").textContent(playerScore.toString());
+document.getElementById("#computerScoreWindow").textContent(computerScore.toString());
+
+document.getElementById("#winner").textContent(winner);
+}
+
 function rock() {
-   player = "rock"
+   document.getElementById("#playerOption").textContent("Rock");
+   document.getElementById("#computerOption").textContent(getComputerSelection().toString());
 	if (computer.toLowerCase() === "paper") {
 		winner = "the computer";
 		computerScore++;
+		showData();
 	} else if (computer.toLowerCase() === "scissors") {
 		winner = "you!";
 		playerScore++;
+		showData();
 	} else if (computer.toLowerCase() === "rock") {
 		winner = "tied";
 		playerScore++;
 		computerScore++;
+		showData();
 	}
 }
 
+
 function paper() {
-    player = "paper"
+    /*Displaying the choice*/
+       document.getElementById("#playerOption").textContent("Paper");
+	   document.getElementById("#computerOption").textContent(getComputerSelection().toString());
 	if (computer.toLowerCase() === "scissors") {
 		winner = "the computer";
 		computerScore++;
+		showData();
 	} else if (computer.toLowerCase() === "rock") {
 		winner = "you!";
 		playerScore++;
+		showData();
 	} else if (computer.toLowerCase() === "paper") {
 		winner = "tied";
 		playerScore++;
 		computerScore++;
+		showData();
 	}
 
 }
 
 function scissors() {
-    player = "scissors"
+    document.getElementById("#playerOption").innerText("Scissors");
+	document.getElementById("#computerOption").innerText(getComputerSelection().toString());
 	if (computer.toLowerCase() === "paper") {
 		winner = "you!";
 		playerScore++;
+		showData();
 	} else if (computer.toLowerCase() === "rock") {
 		winner = "the computer";
 		computerScore++;
+		showData();
 	} else if (computer.toLowerCase() === "scissors") {
 		winner = "tied";
 		computerScore++;
 		playerScore++;
+		showData();
 	}
 }
 
-document.getElementById("#rock").addEventListener('click', rock);
 
-document.getElementById("#paper").addEventListener('click', paper);
+const rockButton = document.querySelector('#rock');
+rockButton.addEventListener('click', rock);
 
-document.getElementById("#scissors").addEventListener('click', scissors);
+const paperButton = document.querySelector('#paper');
+paperButton.addEventListener('click', paper);
 
-document.getElementById("#playerOption").textContent(player);
-document.getElementById("#computerOption").textContent(computer);
-
-document.getElementById("#playerScoreWindow").textContent(playerScore.toString());
-document.getElementById("#computerScoreWindow").textContent(computerScore.toString());
-
-document.getElementById("#winner").textContent(winner);
+const scissorsButton = document.querySelector('#rock');
+scissorsButton.addEventListener('click', scissors);

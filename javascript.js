@@ -111,9 +111,11 @@ function winnerScreen(){
 	
 	let finalResults = document.getElementById("results");
 	let playersChoice = document.getElementById("playerSelection");
+    let displayWinner = document.getElementById("winner");
 	finalResults.removeChild(document.getElementById("showResults"));
 	playersChoice.removeChild(document.getElementById("showPlayerSelection"));
-	document.getElementById("winner").textContent = 'And the winner is....' + winner;
+	displayWinner.textContent = 'And the winner is....' + winner;
+	displayWinner.removeChild(document.getElementById("roundNum"));
 }
 
 
